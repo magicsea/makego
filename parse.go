@@ -11,7 +11,7 @@ import (
 func parse(model *Model) error {
 	err := filepath.Walk(*srcDir, func(path string, info fs.FileInfo, err error) error {
 		c := filepath.ToSlash(path)
-		b, err := filepath.Match(*srcFilePattern, c)
+		b, err := filepath.Match(*srcFilePattern, filepath.Base(c))
 		if err != nil {
 			return err
 		}
